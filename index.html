@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="PT-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Dashboard</title>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script>
+</head>
+<body>
+
+  <aside class="sidebar">
+    <div class="sidebar-header">
+      <h1>Conserta Já</h1>
+      <span>Painel Administrativo</span>
+    </div>
+    <nav class="sidebar-nav">
+      <ul>
+        <li><img src="./imgs/home.png" alt="Dashboard Icon">Dashboard</li>
+        <li><img src="./imgs/Bar chart-2.png" alt="Charts Icon">Charts</li>
+        <li><img src="./imgs/Command.png" alt="Administração Icon">Administração</li>
+        <li><img src="./imgs/Alert triangle.png" alt="Denúncias Icon">Denúncias</li>
+        <li><img src="./imgs/Message square.png" alt="SAQ Icon">SAQ</li>
+      </ul>
+    </nav>
+  </aside>
+
+  <header class="navbar"></header>
+
+  <main class="dashboard-content">
+    <div class="dashboard-cadas">
+      <h2>Usuários Cadastrados</h2>
+      <div class="dashboard-row">
+        <div class="dashboard-card">
+          <h3>Total de Cadastros</h3>
+          <div class="radial-wrapper">
+            <span id="total-cadastros" class="radial-number">0</span>
+            <svg class="radial-svg" width="100" height="100">
+              <circle class="radial-bg" cx="50" cy="50" r="40" stroke-width="5" fill="none"/>
+              <circle class="radial-anim-cadastros" cx="50" cy="50" r="40" stroke-width="5" fill="none"/>
+            </svg>
+          </div>
+          <p class="dashboard-date" id="last-cadastro">Último cadastro:<br>-</p>
+        </div>
+
+        <div class="dashboard-card">
+          <h3>Total de Clientes</h3>
+          <div class="radial-wrapper">
+            <span id="total-clientes" class="radial-number">0</span>
+            <svg class="radial-svg" width="100" height="100">
+              <circle class="radial-bg" cx="50" cy="50" r="40" stroke-width="5" fill="none"/>
+              <circle class="radial-anim-clientes" cx="50" cy="50" r="40" stroke-width="5" fill="none"/>
+            </svg>
+          </div>
+          <p class="dashboard-date" id="last-cliente">Último cadastro:<br>-</p>
+        </div>
+
+        <div class="dashboard-card">
+          <h3>Total de Paneleiros</h3>
+          <div class="radial-wrapper">
+            <span id="total-paneleiros" class="radial-number">0</span>
+            <svg class="radial-svg" width="100" height="100">
+              <circle class="radial-bg" cx="50" cy="50" r="40" stroke-width="5" fill="none"/>
+              <circle class="radial-anim-paneleiros" cx="50" cy="50" r="40" stroke-width="5" fill="none"/>
+            </svg>
+          </div>
+          <p class="dashboard-date" id="last-paneleiro">Último cadastro:<br>-</p>
+        </div>
+      </div>
+
+      <div class="dashboard-percentual">
+        <h2 class="percentual-title">Percentual de Cadastros</h2>
+        <div class="percentual-chart-container">
+          <canvas id="cadastroPercentChart" width="190" height="190"></canvas>
+        </div>
+        <div class="percentual-legenda">
+          <span class="legenda-cliente"></span> Clientes
+          <span class="legenda-paneleiro"></span> Paneleiros
+        </div>
+      </div>
+
+      <div class="dashboard-servicos">
+        <h2>Serviços solicitados</h2>
+        <div class="servicos-content">
+          <p id="servicos-ativos">0</p>
+          <h3>Ativos</h3>
+        </div>
+        <div class="servicos-content2">
+          <div class="servico-bloco">
+            <p id="servicos-concluidos">0</p>
+            <h3>Concluídos</h3>
+          </div>
+          <div class="servico-bloco">
+            <p id="servicos-total">0</p>
+            <h3>Total</h3>
+          </div>
+        </div>
+      </div>
+
+      <div class="dashboard-firebase">
+        <h2>Conexão com o Firebase</h2>
+        <div class="dashboard-img">
+          <div class="img-text">
+            <img src="./imgs/fire.png" alt="">
+            <h2>Operando</h2>
+          </div>
+          <p>Desde:</p>
+        </div>
+      </div>
+
+      <div class="dashboard-estado">
+        <h2>Estado do sistema</h2>
+        <div class="dashboard-img2">
+          <div class="img-text">
+            <img src="./imgs/feliz.png" alt="">
+            <h2>Operando</h2>
+          </div>
+          <p>Desde:</p>
+        </div>
+      </div>
+    </main>
+
+    <script src="firebase-dashboard.js"></script>
+  </body>
+</html>

@@ -1,0 +1,369 @@
+html, body {
+  height: 100%;
+}
+
+body {
+  background: linear-gradient(135deg, #25418E 10%, #071848 70%);
+  font-family: 'Segoe UI', Arial, sans-serif;
+  margin: 0;
+}
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 250px;
+  height: 100vh;
+  background: linear-gradient(180deg, #0A2558 10%, #000E28 100%);
+  color: #fff;
+  padding: 0;
+  z-index: 20;
+  display: flex;
+  flex-direction: column;
+}
+.sidebar-header {
+  background-color: #000E28;
+  padding: 19px 18px 10px 20px;
+}
+.sidebar-header h1 {
+  margin: 0;
+  font-size: 1.9rem;
+  font-weight: bold;
+}
+.sidebar-header span {
+  font-size: 0.95rem;
+  color: #a5c6fe;
+}
+.sidebar-nav {
+  margin-top: 30px;
+  flex: 1;
+}
+.sidebar-nav ul {
+  list-style: none;
+  padding: 0 0 0 20px;
+}
+.sidebar-nav ul li {
+  display: flex;
+  align-items: center;
+  font-size: 1.09rem;
+  margin-bottom: 30px;
+  gap: 16px;
+  cursor: pointer;
+  padding: 10px 6px;
+  border-radius: 5px;
+}
+.sidebar-nav ul li:hover {
+  background: rgba(255,255,255,0.08);
+}
+.sidebar-nav .material-icons {
+  font-size: 1.5em;
+}
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 250px;
+  height: 90px;
+  width: calc(100% - 250px);
+  background: linear-gradient(90deg, #0A2558 10%, #000E28 100%);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: #fff;
+  z-index: 10;
+  padding: 0 38px 0 20px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+.navbar-logo h1 {
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: bold;
+}
+
+.dashboard-content {
+  margin-left: 250px;
+  margin-top: 64px;
+  padding: 38px 18px;
+}
+.dashboard-cadas {
+  background: #020C27;
+  padding-left: 25px;
+  padding-bottom: 25px;
+  padding-right: 25px;
+  border-radius: 24px;
+  color: #fff;
+  width: 45%;
+  margin: auto;
+  position: fixed;
+  top: 10%;
+  left: 15%;
+}
+.dashboard-row {
+  display: flex;
+  gap: 40px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.dashboard-card {
+  background: #17295C;
+  border-radius: 36px;
+  width: 230px;
+  min-width: 200px;
+  padding: 28px 0 20px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.percentual-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-align: center;
+  color: #fff;
+  margin-bottom: 15px;
+}
+.dashboard-percentual {
+  background: #020C27;
+  padding-left: 46px;
+  padding-bottom: 25px;
+  padding-right: 55px;
+  border-radius: 24px;
+  color: #fff;
+  max-width: 900px;
+  margin: auto;
+  position: fixed;
+  top: 10%;
+  left: 65%;
+  text-align: center;
+}
+
+.dashboard-percentual h2,
+.dashboard-percentual h3,
+.dashboard-percentual p {
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+}
+.percentual-chart-container {
+  width: 200px;
+  height: 200px;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+.percentual-legenda {
+  margin-top: 18px;
+  text-align: left;
+  font-size: 1.08em;
+  display: flex;
+  gap: 30px;
+  justify-content: flex-start;
+  align-items: center;
+}
+.legenda-cliente {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  background: #39cf7d;
+  border-radius: 4px;
+  margin-right: 7px;
+  vertical-align: middle;
+}
+.legenda-paneleiro {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  background: #34b1e2;
+  border-radius: 4px;
+  margin: 0 7px 0 25px;
+  vertical-align: middle;
+}
+.dashboard-servicos {
+  background: #020C27;
+  padding-left: 25px;
+  padding-bottom: 10px;
+  padding-right: 25px;
+  border-radius: 24px;
+  color: #fff;
+  width: 20%;
+  position: fixed;
+  top: 55%;
+  left: 15%;
+  text-align: center;
+}
+
+.servicos-content {
+  padding-top: 15px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 1.5rem;
+  color: yellow;
+}
+
+.servicos-content p {
+  font-size: 1.6rem;
+  font-weight: bold;
+}
+.servicos-content2 {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;             /* Espaço entre blocos */
+  align-items: flex-start;
+
+}
+.servico-bloco {
+  padding-top: 20px;
+  padding-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+.servico-bloco p {
+  font-size: 1.6rem;     /* número maior */
+  color: #fff;
+  font-weight: bold;
+  margin: 0 0 0 2px;
+  text-underline-offset: 2px;
+}
+.servico-bloco h3 {
+  font-size: 1.6rem;
+  color: #fff;
+  font-weight: bold;
+  margin: 0 0 0 8px;
+}
+
+
+.dashboard-firebase {
+  background: #020C27;
+  padding-left: 25px;
+  padding-bottom: 26px;
+  padding-right: 25px;
+  border-radius: 24px;
+  color: #fff;
+  width: 20%;
+  margin: auto;
+  position: fixed;
+  top: 55%;
+  left: 40%;
+  text-align: center;
+
+}
+
+.dashboard-img, .dashboard-img2 h2{
+  color: green;
+}
+
+.dashboard-img, .dashboard-img2 p{
+  color: green;
+}
+.dashboard-img {
+  padding-top: 15px;
+  padding-bottom: 10px;
+  width: 230px;
+  min-width: 200px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.dashboard-img2 {
+  width: 230px;
+  min-width: 200px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.dashboard-estado {
+  background: #020C27;
+  padding-left: 25px;
+  padding-bottom: 20px;
+  padding-right: 0px;
+  border-radius: 24px;
+  color: #fff;
+  width: 20%;
+  margin: auto;
+  position: fixed;
+  top: 55%;
+  left: 65%;
+  text-align: center;
+}
+
+
+.radial-wrapper {
+  position: relative;
+  width: 100px;
+  height: 100px;
+  margin: 10px auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.radial-number {
+  position: absolute;
+  left: 0; top: 0; right: 0; bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.2rem;
+  font-weight: bold;
+  color: #fff;
+  z-index: 1;
+}
+
+.radial-svg {
+  position: absolute;
+  left: 0; top: 0;
+  z-index: 0;
+}
+
+.radial-bg {
+  stroke: #10306b;
+  opacity: 0.4;
+}
+
+/* CÍRCULOS COM GIRO E ANIMAÇÃO DE COR */
+.radial-anim-cadastros,
+.radial-anim-clientes,
+.radial-anim-paneleiros {
+  stroke-dasharray: 314;
+  stroke-dashoffset: 0;
+  transform-origin: 50px 50px;
+  animation:
+    radial-spin 2.5s linear infinite,
+    radial-colors-cadastros 2.5s ease-in-out infinite;
+}
+
+
+/* Gira e alterna entre verde e azul para cadastros */
+@keyframes radial-colors-cadastros {
+  0%, 100% { stroke: #39cf7d; }
+  50% { stroke: #34b1e2; }
+}
+
+/* Gira e alterna entre azul e amarelo para clientes */
+.radial-anim-clientes {
+  animation:
+    radial-spin 2.5s linear infinite,
+    radial-colors-clientes 2.5s ease-in-out infinite;
+}
+
+@keyframes radial-colors-clientes {
+  0%, 100% { stroke: #34b1e2; }
+  50% { stroke: #f2c94c; }
+}
+
+/* Gira e alterna entre amarelo e verde para paneleiros */
+.radial-anim-paneleiros {
+  animation:
+    radial-spin 2.5s linear infinite,
+    radial-colors-paneleiros 2.5s ease-in-out infinite;
+}
+
+@keyframes radial-colors-paneleiros {
+  0%, 100% { stroke: #f2c94c; }
+  50% { stroke: #39cf7d; }
+}
