@@ -61,7 +61,7 @@ body {
   position: fixed;
   top: 0;
   left: 250px;
-  height: 90px;
+  height: 91px;
   width: calc(100% - 250px);
   background: linear-gradient(90deg, #0A2558 10%, #000E28 100%);
   display: flex;
@@ -367,3 +367,4 @@ body {
   0%, 100% { stroke: #f2c94c; }
   50% { stroke: #39cf7d; }
 }
+
