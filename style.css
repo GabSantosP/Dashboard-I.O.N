@@ -1,5 +1,7 @@
 html, body {
   height: 100%;
+  overflow-y: hidden;
+  overflow-x: hidden; 
 }
 
 body {
@@ -86,11 +88,12 @@ body {
 .dashboard-cadas {
   background: #020C27;
   padding-left: 25px;
-  padding-bottom: 25px;
+  padding-bottom: 10px;
   padding-right: 25px;
   border-radius: 24px;
   color: #fff;
   width: 45%;
+  height: 39%;
   margin: auto;
   position: fixed;
   top: 10%;
@@ -121,12 +124,13 @@ body {
 }
 .dashboard-percentual {
   background: #020C27;
-  padding-left: 46px;
-  padding-bottom: 25px;
-  padding-right: 55px;
+  padding-left: 25px;
+  padding-bottom: 10px;
+  padding-right: 25px;
   border-radius: 24px;
   color: #fff;
-  max-width: 900px;
+  width: 20%;
+  height: 39%;
   margin: auto;
   position: fixed;
   top: 10%;
@@ -142,6 +146,7 @@ body {
 .percentual-chart-container {
   width: 200px;
   height: 200px;
+  padding-top: 10%;
   margin: auto;
   display: flex;
   align-items: center;
@@ -149,12 +154,15 @@ body {
   position: relative;
 }
 .percentual-legenda {
-  margin-top: 18px;
-  text-align: left;
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
   font-size: 1.08em;
   display: flex;
   gap: 30px;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: center;
 }
 .legenda-cliente {
@@ -176,48 +184,69 @@ body {
   vertical-align: middle;
 }
 .dashboard-servicos {
-  background: #020C27;
+  background: #081F4A;
   padding-left: 25px;
   padding-bottom: 10px;
   padding-right: 25px;
   border-radius: 24px;
   color: #fff;
   width: 20%;
+  height: 27%;
   position: fixed;
   top: 55%;
   left: 15%;
   text-align: center;
+  display: flex;
+  flex-direction: column;
 }
 
+.dashboard-servicos h2 {
+  background: #020C27;
+  color: #fff;
+  margin: 0px -25px 0px -25px;
+  padding: 10px 25px;
+  border-radius: 24px 24px 0 0;
+}
+
+
 .servicos-content {
-  padding-top: 15px;
+  padding-top: 0px;
   display: flex;
   align-items: center;
   gap: 10px;
   font-size: 1.5rem;
   color: yellow;
+  position: relative;
+  margin-top: -5%;
 }
 
+
 .servicos-content p {
-  font-size: 1.6rem;
+  font-size: 2rem;
   font-weight: bold;
+}
+
+.ativo-fundo {
+  position: absolute;
+  left: -6.5%;
+  width: 59%;
+  height: 88%;
+  z-index: -1;
 }
 .servicos-content2 {
   display: flex;
   flex-direction: column;
-  gap: 10px;             /* Espaço entre blocos */
+  gap: 10px;
   align-items: flex-start;
-
+  margin-top: 5%;
 }
 .servico-bloco {
-  padding-top: 20px;
-  padding-bottom: 20px;
   display: flex;
   align-items: center;
   gap: 7px;
 }
 .servico-bloco p {
-  font-size: 1.6rem;     /* número maior */
+  font-size: 2rem;
   color: #fff;
   font-weight: bold;
   margin: 0 0 0 2px;
@@ -234,11 +263,12 @@ body {
 .dashboard-firebase {
   background: #020C27;
   padding-left: 25px;
-  padding-bottom: 26px;
+  padding-bottom: 10px;
   padding-right: 25px;
   border-radius: 24px;
   color: #fff;
   width: 20%;
+  height: 27%;
   margin: auto;
   position: fixed;
   top: 55%;
@@ -264,6 +294,11 @@ body {
   align-items: center;
   justify-content: center;
   gap: 10px;
+  margin-left: 5%;
+}
+
+.fogo {
+  width: 80%
 }
 
 .dashboard-img2 {
@@ -274,21 +309,42 @@ body {
   align-items: center;
   justify-content: center;
   gap: 10px;
+  margin-left: 7%;
 }
+
+
 
 .dashboard-estado {
   background: #020C27;
   padding-left: 25px;
-  padding-bottom: 20px;
-  padding-right: 0px;
+  padding-bottom: 10px;
+  padding-right: 25px;
   border-radius: 24px;
   color: #fff;
   width: 20%;
+  height: 27%;
   margin: auto;
   position: fixed;
   top: 55%;
   left: 65%;
   text-align: center;
+}
+
+.robo {
+  width: 75%
+}
+
+.parte-texto {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  align-items: flex-start;
+  left: 17%;
+}
+
+.parte-texto h2 {
+  font-size: 1.6rem;
+  
 }
 
 
@@ -338,13 +394,11 @@ body {
 }
 
 
-/* Gira e alterna entre verde e azul para cadastros */
 @keyframes radial-colors-cadastros {
   0%, 100% { stroke: #39cf7d; }
   50% { stroke: #34b1e2; }
 }
 
-/* Gira e alterna entre azul e amarelo para clientes */
 .radial-anim-clientes {
   animation:
     radial-spin 2.5s linear infinite,
@@ -356,7 +410,6 @@ body {
   50% { stroke: #f2c94c; }
 }
 
-/* Gira e alterna entre amarelo e verde para paneleiros */
 .radial-anim-paneleiros {
   animation:
     radial-spin 2.5s linear infinite,
@@ -367,4 +420,3 @@ body {
   0%, 100% { stroke: #f2c94c; }
   50% { stroke: #39cf7d; }
 }
-
