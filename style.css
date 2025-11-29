@@ -278,11 +278,11 @@ body {
 }
 
 .dashboard-img, .dashboard-img2 h2{
-  color: green;
+  color: #36FB39;
 }
 
 .dashboard-img, .dashboard-img2 p{
-  color: green;
+  color: #36FB39;
 }
 .dashboard-img {
   padding-top: 15px;
@@ -420,3 +420,4 @@ body {
   0%, 100% { stroke: #f2c94c; }
   50% { stroke: #39cf7d; }
 }
+
