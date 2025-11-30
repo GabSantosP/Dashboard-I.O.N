@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="PT-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="Charts.css">
+    <title>Charts</title>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script>
+</head>
+<body>
+    
+  <aside class="sidebar">
+    <div class="sidebar-header">
+      <h1>Conserta Já</h1>
+      <span>Painel Administrativo</span>
+    </div>
+    <nav class="sidebar-nav">
+      <ul>
+        <li><a href="index.html"><img src="./imgs/Home.png" alt="Dashboard Icon">Dashboard</a></li>
+        <li><a href="Charts.html"><img src="./imgs/Bar chart-2.png" alt="Charts Icon">Charts</a></li>
+        <li><img src="./imgs/Command.png" alt="Administração Icon">Administração</li>
+        <li><img src="./imgs/Alert triangle.png" alt="Denúncias Icon">Denúncias</li>
+        <li><img src="./imgs/Message square.png" alt="SAQ Icon">Suporte</li>
+      </ul>
+    </nav>
+  </aside>
+
+  <header class="navbar"></header>
+    <main class="charts-content">
+      <div class="chart-container">
+        <h2>Criação de Contas ao Longo do Tempo</h2>
+        <canvas id="accountCreationChart"></canvas>
+      </div>
+      <div class="chart-container">
+        <h2>Solicitações de Serviços Ativos ao Longo do Tempo</h2>
+        <canvas id="serviceRequestsChart"></canvas>
+      </div>
+    </main>
+
+    <script src="firebase-dashboard.js"></script>
+    <script src="charts-logic.js"></script>
+</body>
+</html>
