@@ -1,5 +1,4 @@
 (function() {
-  // Configuração do Firebase
   var firebaseConfig = {
     apiKey: "AIzaSyAZN6yG-tW82RFa9NYDeShahMwgSCgADhg",
     authDomain: "consertaja-database.firebaseapp.com",
@@ -11,22 +10,16 @@
     measurementId: "G-HW4RM6RP06"
   };
 
-  // Inicializa Firebase se ainda não estiver
   if (!firebase.apps.length) {
     firebase.initializeApp(firebaseConfig);
   }
 
-  // Mantém o Realtime Database funcionando
   var db = firebase.database();
 
-  // 🔥 ATIVA O FIRESTORE AGORA
   var firestore = firebase.firestore();
 
   let donutChart = null;
 
-  // -------------------------------
-  // FUNÇÃO EXISTENTE — NÃO ALTERADA
-  // -------------------------------
   function atualizarContadores() {
     db.ref("users").once("value").then(function(snapshot) {
       var totalCadastros = 0;
@@ -91,32 +84,29 @@
     return "-";
   }
 
-  // -------------------------------
-  // 🔥 FUNÇÃO NOVA — FIRESTORE
-  // -------------------------------
-  function atualizarServicos() {
-    firestore.collection("solicitacoes_servico").get()
-      .then((querySnapshot) => {
-        let total = querySnapshot.size;
-        let ativos = 0;
-        let concluidos = 0;
+function atualizarServicos() {
+  firestore.collection("solicitacoes_servico").onSnapshot((querySnapshot) => {
+    let total = querySnapshot.size;
+    let ativos = 0;
+    let concluidos = 0;
 
-        querySnapshot.forEach((doc) => {
-          let data = doc.data();
+    querySnapshot.forEach((doc) => {
+      const data = doc.data();
 
-          if (data.ativo === true) ativos++;
-          else concluidos++;
-        });
+      if (data.ativo === true && data.status !== "concluido") {
+        ativos++;
+      }
 
-        // Atualiza no HTML
-        document.getElementById("servicos-ativos").textContent = ativos;
-        document.getElementById("servicos-concluidos").textContent = concluidos;
-        document.getElementById("servicos-total").textContent = total;
-      })
-      .catch((error) => {
-        console.error("Erro ao carregar serviços do Firestore:", error);
-      });
-  }
+      if (data.status && data.status.toLowerCase() === "concluido") {
+        concluidos++;
+      }
+    });
+
+    document.getElementById("servicos-ativos").textContent = ativos;
+    document.getElementById("servicos-concluidos").textContent = concluidos;
+    document.getElementById("servicos-total").textContent = total;
+  });
+}
 
   function atualizarGraficoPercentual(clientes, paneleiros) {
     var total = clientes + paneleiros;
@@ -152,10 +142,9 @@
     });
   }
 
-  // Início
   window.onload = function() {
-    atualizarContadores();  // Realtime
-    atualizarServicos();    // Firestore
+    atualizarContadores();
+    atualizarServicos();
   };
 
 })();
