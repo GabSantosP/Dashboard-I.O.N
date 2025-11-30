@@ -56,6 +56,14 @@ body {
 .sidebar-nav ul li:hover {
   background: rgba(255,255,255,0.08);
 }
+.sidebar-nav a {
+  text-decoration: none;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  width: 100%;
+}
 .sidebar-nav .material-icons {
   font-size: 1.5em;
 }
@@ -420,4 +428,3 @@ body {
   0%, 100% { stroke: #f2c94c; }
   50% { stroke: #39cf7d; }
 }
-
