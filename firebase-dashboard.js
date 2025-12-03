@@ -19,6 +19,7 @@
   var firestore = firebase.firestore();
 
   let donutChart = null;
+  let donutChartMobile = null;
 
   function atualizarContadores() {
     db.ref("users").once("value").then(function(snapshot) {
@@ -53,7 +54,6 @@
         }
       });
 
-      // Desktop elements
       const totalCadastrosEl = document.getElementById("total-cadastros");
       const totalClientesEl = document.getElementById("total-clientes");
       const totalPaneleirosEl = document.getElementById("total-paneleiros");
@@ -61,7 +61,6 @@
       const lastClienteEl = document.getElementById("last-cliente");
       const lastPaneleiroEl = document.getElementById("last-paneleiro");
 
-      // Mobile elements
       const totalCadastrosMobileEl = document.getElementById("total-cadastros-mobile");
       const totalClientesMobileEl = document.getElementById("total-clientes-mobile");
       const totalPaneleirosMobileEl = document.getElementById("total-paneleiros-mobile");
@@ -76,7 +75,6 @@
       if (lastClienteEl) lastClienteEl.innerHTML = "Último cadastro:<br>" + formatarData(ultimoCliente?.conta);
       if (lastPaneleiroEl) lastPaneleiroEl.innerHTML = "Último cadastro:<br>" + formatarData(ultimoPaneleiro?.conta);
 
-      // Update mobile elements
       if (totalCadastrosMobileEl) totalCadastrosMobileEl.textContent = totalCadastros;
       if (totalClientesMobileEl) totalClientesMobileEl.textContent = totalClientes;
       if (totalPaneleirosMobileEl) totalPaneleirosMobileEl.textContent = totalPaneleiros;
@@ -172,9 +170,40 @@ function atualizarServicos() {
       },
       plugins: [ChartDataLabels]
     });
+
+    const chartMobileEl = document.getElementById("cadastroPercentChart-mobile");
+    if (chartMobileEl) {
+      var ctxMobile = chartMobileEl.getContext("2d");
+      if (donutChartMobile) donutChartMobile.destroy();
+      donutChartMobile = new Chart(ctxMobile, {
+        type: 'doughnut',
+        data: {
+          labels: ['Clientes', 'Paneleiros'],
+          datasets: [{
+            data: [clientes, paneleiros],
+            backgroundColor: ['#39cf7d', '#34b1e2'],
+            borderWidth: 0
+          }]
+        },
+        options: {
+          cutout: '60%',
+          plugins: {
+            legend: { display: false },
+            tooltip: { enabled: false },
+            datalabels: {
+              display: true,
+              formatter: function(value) {
+                return Math.round((value / total) * 100) + '%';
+              },
+              color: '#fff'
+            }
+          }
+        },
+        plugins: [ChartDataLabels]
+      });
+    }
   }
 
-  // Hamburger menu toggle
   const hamburger = document.getElementById('hamburger');
   const sidebar = document.querySelector('.sidebar');
   const overlay = document.querySelector('.sidebar-overlay');
@@ -197,7 +226,6 @@ function atualizarServicos() {
     overlay.addEventListener('click', closeSidebar);
   }
 
-  // Close sidebar when clicking on navigation links
   const navLinks = document.querySelectorAll('.sidebar-nav a');
   navLinks.forEach(link => {
     link.addEventListener('click', closeSidebar);
