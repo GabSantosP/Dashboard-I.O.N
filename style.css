@@ -373,7 +373,7 @@ body {
 }
 
 .fogo {
-  width: 50px;
+  width: 77px;
   height: auto;
 }
 
@@ -405,7 +405,7 @@ body {
 }
 
 .robo {
-  width: 50px;
+  width: 77px;
   height: auto;
 }
 
@@ -416,12 +416,12 @@ body {
 }
 
 .parte-texto h2 {
-  font-size: 0.9rem;
+  font-size: 1.03rem;
   margin: 0;
 }
 
 .parte-texto p {
-  font-size: 0.7rem;
+  font-size: 0.80rem;
   margin: 0;
 }
 
@@ -795,7 +795,7 @@ body {
 
   .mobile-layout .fogo,
   .mobile-layout .robo {
-    width: 60px;
+    width: 89px;
   }
 
   .charts-content {
