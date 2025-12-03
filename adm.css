@@ -1,11 +1,12 @@
-html, body {
-  height: 100%;
+html {
+  background: linear-gradient(135deg, #25418E 10%, #071848 70%);
+  min-height: 100%;
 }
 
 body {
-  background: linear-gradient(135deg, #25418E 10%, #071848 70%);
   font-family: 'Segoe UI', Arial, sans-serif;
   margin: 0;
+  min-height: 100%;
 }
 .sidebar {
   position: fixed;
@@ -551,6 +552,10 @@ body {
 
 /* Responsive styles */
 @media (max-width: 768px) {
+  body {
+    overflow-x: hidden;
+  }
+
   .sidebar-overlay {
     display: block;
     position: fixed;
@@ -582,25 +587,51 @@ body {
 
   .hamburger {
     display: block;
+    position: absolute;
+    left: 20px;
   }
 
   .navbar {
     left: 0;
     width: 100%;
+    justify-content: center;
+  }
+
+  .navbar-logo h1 {
+    font-size: 1.9rem;
+  }
+
+  .navbar-logo h1::before {
+    content: "Conserta Já";
   }
 
   .dashboard-content {
     margin-left: 0;
     margin-top: 91px;
-    padding: 20px;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
   }
 
   .admin-container {
-    width: 100%;
+    width: 95%;
+    max-width: 500px;
+    padding: 15px;
   }
 
   .users-grid {
     grid-template-columns: 1fr;
+  }
+
+  .user-card {
+    padding: 10px;
+    width: 80%;
+  }
+
+  .user-photo {
+    width: 60px;
+    height: 60px;
   }
 }
 
