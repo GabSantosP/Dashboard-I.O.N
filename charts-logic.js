@@ -38,7 +38,7 @@ function loadAccountCreationChart() {
     let total = 0;
     const accumulated = allDates.map(date => {
       total += (createdDates[date] || 0) - (deletedDates[date] || 0);
-      total = Math.max(0, total); // Nunca abaixo de 0
+      total = Math.max(0, total);
       return total;
     });
 
@@ -49,7 +49,7 @@ function loadAccountCreationChart() {
       data: {
         labels: labels,
         datasets: [{
-          label: 'Total de Contas (Variação Real)',
+          label: 'Total de Contas',
           data: accumulated,
           borderColor: '#4facfe',
           backgroundColor: 'rgba(79,172,254,0.20)',
@@ -102,17 +102,16 @@ function loadServiceRequestsChart() {
         let createdDate = (createdTimestamp.toDate) ? createdTimestamp.toDate() : new Date(createdTimestamp);
         let createdKey = createdDate.toISOString().split('T')[0];
         if (!events[createdKey]) events[createdKey] = 0;
-        events[createdKey] += 1; // +1 for creation
+        events[createdKey] += 1;
       }
 
-      // Check for completion
       if (data.status && data.status.toLowerCase() === "concluido") {
         let completedTimestamp = data.timestampConclusao || data.dataConclusao || data.completedAt;
         if (completedTimestamp) {
           let completedDate = (completedTimestamp.toDate) ? completedTimestamp.toDate() : new Date(completedTimestamp);
           let completedKey = completedDate.toISOString().split('T')[0];
           if (!events[completedKey]) events[completedKey] = 0;
-          events[completedKey] -= 1; // -1 for completion
+          events[completedKey] -= 1;
         }
       }
     });
@@ -143,7 +142,7 @@ function loadServiceRequestsChart() {
           pointHoverRadius: 6,
           borderWidth: 2,
           tension: 0.4,
-          fill: false
+          fill: true
         }]
       },
       options: {
