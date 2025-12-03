@@ -1,7 +1,6 @@
-html, body {
+html,
+body {
   height: 100%;
-  overflow-y: hidden;
-  overflow-x: hidden; 
 }
 
 body {
@@ -9,6 +8,7 @@ body {
   font-family: 'Segoe UI', Arial, sans-serif;
   margin: 0;
 }
+
 .sidebar {
   position: fixed;
   top: 0;
@@ -22,27 +22,33 @@ body {
   display: flex;
   flex-direction: column;
 }
+
 .sidebar-header {
   background-color: #000E28;
   padding: 19px 18px 10px 20px;
 }
+
 .sidebar-header h1 {
   margin: 0;
   font-size: 1.9rem;
   font-weight: bold;
 }
+
 .sidebar-header span {
   font-size: 0.95rem;
   color: #a5c6fe;
 }
+
 .sidebar-nav {
   margin-top: 30px;
   flex: 1;
 }
+
 .sidebar-nav ul {
   list-style: none;
   padding: 0 0 0 20px;
 }
+
 .sidebar-nav ul li {
   display: flex;
   align-items: center;
@@ -53,9 +59,11 @@ body {
   padding: 10px 6px;
   border-radius: 5px;
 }
+
 .sidebar-nav ul li:hover {
-  background: rgba(255,255,255,0.08);
+  background: rgba(255, 255, 255, 0.08);
 }
+
 .sidebar-nav a {
   text-decoration: none;
   color: #fff;
@@ -64,9 +72,11 @@ body {
   gap: 16px;
   width: 100%;
 }
+
 .sidebar-nav .material-icons {
   font-size: 1.5em;
 }
+
 .navbar {
   position: fixed;
   top: 0;
@@ -80,8 +90,18 @@ body {
   color: #fff;
   z-index: 10;
   padding: 0 38px 0 20px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
 }
+
+.hamburger {
+  display: none;
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 24px;
+  cursor: pointer;
+}
+
 .navbar-logo h1 {
   margin: 0;
   font-size: 1.25rem;
@@ -90,119 +110,163 @@ body {
 
 .dashboard-content {
   margin-left: 250px;
-  margin-top: 64px;
-  padding: 38px 18px;
+  margin-top: 91px;
+  padding: 10px;
+  height: calc(100vh - 91px);
+  box-sizing: border-box;
+  overflow: hidden;
 }
+
+.desktop-row-1 {
+  display: flex;
+  gap: 10px;
+  flex: 1;
+  min-height: 0;
+  max-height: calc(50% - 5px);
+}
+
+.desktop-row-1 > .dashboard-cadas {
+  flex: 0 0 60%;
+  overflow: hidden;
+}
+
+.desktop-row-1 > .dashboard-percentual {
+  flex: 0 0 calc(40% - 10px);
+  overflow: hidden;
+}
+
+.desktop-row-2 {
+  display: flex;
+  gap: 10px;
+  flex: 1;
+  min-height: 0;
+  max-height: calc(50% - 5px);
+}
+
+.desktop-row-2 > .dashboard-servicos,
+.desktop-row-2 > .dashboard-firebase,
+.desktop-row-2 > .dashboard-estado {
+  flex: 1;
+  overflow: hidden;
+}
+
 .dashboard-cadas {
   background: #020C27;
-  padding-left: 25px;
-  padding-bottom: 10px;
-  padding-right: 25px;
-  border-radius: 24px;
+  padding: 10px;
+  border-radius: 16px;
   color: #fff;
-  width: 45%;
-  height: 39%;
-  margin: auto;
-  position: fixed;
-  top: 10%;
-  left: 15%;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
 }
+
+.dashboard-cadas h2 {
+  font-size: 1rem;
+  margin: 0 0 8px 0;
+}
+
 .dashboard-row {
   display: flex;
-  gap: 40px;
+  gap: 10px;
   justify-content: center;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
+  flex: 1;
 }
+
 .dashboard-card {
   background: #17295C;
-  border-radius: 36px;
-  width: 230px;
-  min-width: 200px;
-  padding: 28px 0 20px 0;
+  border-radius: 12px;
+  flex: 1;
+  min-width: 0;
+  padding: 8px 5px;
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
 }
+
+.dashboard-card h3 {
+  font-size: 0.7rem;
+  margin: 0 0 3px 0;
+  text-align: center;
+}
+
+.dashboard-date {
+  font-size: 0.6rem;
+  margin: 3px 0 0 0;
+  text-align: center;
+}
+
 .percentual-title {
-  font-size: 1.5rem;
+  font-size: 1rem;
   font-weight: bold;
   text-align: center;
   color: #fff;
-  margin-bottom: 15px;
+  margin: 0 0 5px 0;
 }
+
 .dashboard-percentual {
   background: #020C27;
-  padding-left: 25px;
-  padding-bottom: 10px;
-  padding-right: 25px;
-  border-radius: 24px;
+  padding: 10px;
+  border-radius: 16px;
   color: #fff;
-  width: 20%;
-  height: 39%;
-  margin: auto;
-  position: fixed;
-  top: 10%;
-  left: 65%;
   text-align: center;
+  display: flex;
+  flex-direction: column;
 }
 
 .dashboard-percentual h2,
 .dashboard-percentual h3,
 .dashboard-percentual p {
-  text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
+
 .percentual-chart-container {
-  width: 200px;
-  height: 200px;
-  padding-top: 10%;
+  width: 120px;
+  height: 120px;
   margin: auto;
   display: flex;
   align-items: center;
   justify-content: center;
   position: relative;
+  flex: 1;
 }
+
 .percentual-legenda {
-  position: absolute;
-  bottom: 10px;
-  left: 50%;
-  transform: translateX(-50%);
   text-align: center;
-  font-size: 1.08em;
+  font-size: 0.7rem;
   display: flex;
-  gap: 30px;
+  gap: 10px;
   justify-content: center;
   align-items: center;
+  margin-top: 5px;
 }
+
 .legenda-cliente {
   display: inline-block;
-  width: 20px;
-  height: 20px;
+  width: 12px;
+  height: 12px;
   background: #39cf7d;
-  border-radius: 4px;
-  margin-right: 7px;
+  border-radius: 3px;
+  margin-right: 3px;
   vertical-align: middle;
 }
+
 .legenda-paneleiro {
   display: inline-block;
-  width: 20px;
-  height: 20px;
+  width: 12px;
+  height: 12px;
   background: #34b1e2;
-  border-radius: 4px;
-  margin: 0 7px 0 25px;
+  border-radius: 3px;
+  margin: 0 3px 0 8px;
   vertical-align: middle;
 }
+
 .dashboard-servicos {
   background: #081F4A;
-  padding-left: 25px;
-  padding-bottom: 10px;
-  padding-right: 25px;
-  border-radius: 24px;
+  padding: 10px;
+  border-radius: 16px;
   color: #fff;
-  width: 20%;
-  height: 27%;
-  position: fixed;
-  top: 55%;
-  left: 15%;
   text-align: center;
   display: flex;
   flex-direction: column;
@@ -211,11 +275,11 @@ body {
 .dashboard-servicos h2 {
   background: #020C27;
   color: #fff;
-  margin: 0px -25px 0px -25px;
-  padding: 10px 25px;
-  border-radius: 24px 24px 0 0;
+  font-size: 0.9rem;
+  margin: -10px -10px 5px -10px;
+  padding: 8px 10px;
+  border-radius: 16px 16px 0 0;
 }
-
 
 .servicos-content {
   padding-top: 0px;
@@ -227,7 +291,6 @@ body {
   position: relative;
   margin-top: -5%;
 }
-
 
 .servicos-content p {
   font-size: 2rem;
@@ -241,6 +304,7 @@ body {
   height: 88%;
   z-index: -1;
 }
+
 .servicos-content2 {
   display: flex;
   flex-direction: column;
@@ -248,11 +312,13 @@ body {
   align-items: flex-start;
   margin-top: 5%;
 }
+
 .servico-bloco {
   display: flex;
   align-items: center;
   gap: 7px;
 }
+
 .servico-bloco p {
   font-size: 2rem;
   color: #fff;
@@ -260,6 +326,7 @@ body {
   margin: 0 0 0 2px;
   text-underline-offset: 2px;
 }
+
 .servico-bloco h3 {
   font-size: 1.6rem;
   color: #fff;
@@ -267,100 +334,103 @@ body {
   margin: 0 0 0 8px;
 }
 
-
 .dashboard-firebase {
   background: #020C27;
-  padding-left: 25px;
-  padding-bottom: 10px;
-  padding-right: 25px;
-  border-radius: 24px;
+  padding: 10px;
+  border-radius: 16px;
   color: #fff;
-  width: 20%;
-  height: 27%;
-  margin: auto;
-  position: fixed;
-  top: 55%;
-  left: 40%;
   text-align: center;
-
+  display: flex;
+  flex-direction: column;
 }
 
-.dashboard-img, .dashboard-img2 h2{
+.dashboard-firebase h2 {
+  font-size: 0.9rem;
+  margin: 0 0 5px 0;
+}
+
+.dashboard-img,
+.dashboard-img2 h2 {
   color: #36FB39;
 }
 
-.dashboard-img, .dashboard-img2 p{
+.dashboard-img,
+.dashboard-img2 p {
   color: #36FB39;
 }
+
 .dashboard-img {
-  padding-top: 15px;
-  padding-bottom: 10px;
-  width: 230px;
-  min-width: 200px;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  gap: 10px;
-  margin-left: 5%;
+  gap: 5px;
+  flex: 1;
+  width: auto;
+  min-width: 0;
+  margin: 0;
+  padding: 0;
 }
 
 .fogo {
-  width: 80%
+  width: 50px;
+  height: auto;
 }
 
 .dashboard-img2 {
-  width: 230px;
-  min-width: 200px;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  gap: 10px;
-  margin-left: 7%;
+  gap: 5px;
+  flex: 1;
+  width: auto;
+  min-width: 0;
+  margin: 0;
 }
-
-
 
 .dashboard-estado {
   background: #020C27;
-  padding-left: 25px;
-  padding-bottom: 10px;
-  padding-right: 25px;
-  border-radius: 24px;
+  padding: 10px;
+  border-radius: 16px;
   color: #fff;
-  width: 20%;
-  height: 27%;
-  margin: auto;
-  position: fixed;
-  top: 55%;
-  left: 65%;
   text-align: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.dashboard-estado h2 {
+  font-size: 0.9rem;
+  margin: 0 0 5px 0;
 }
 
 .robo {
-  width: 75%
+  width: 50px;
+  height: auto;
 }
 
 .parte-texto {
   display: flex;
-  position: relative;
   flex-direction: column;
   align-items: flex-start;
-  left: 17%;
 }
 
 .parte-texto h2 {
-  font-size: 1.6rem;
-  
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+.parte-texto p {
+  font-size: 0.7rem;
+  margin: 0;
 }
 
 
 .radial-wrapper {
   position: relative;
-  width: 100px;
-  height: 100px;
-  margin: 10px auto;
+  width: 50px;
+  height: 50px;
+  margin: 3px auto;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -368,11 +438,14 @@ body {
 
 .radial-number {
   position: absolute;
-  left: 0; top: 0; right: 0; bottom: 0;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 2.2rem;
+  font-size: 1.1rem;
   font-weight: bold;
   color: #fff;
   z-index: 1;
@@ -380,7 +453,8 @@ body {
 
 .radial-svg {
   position: absolute;
-  left: 0; top: 0;
+  left: 0;
+  top: 0;
   z-index: 0;
 }
 
@@ -393,9 +467,9 @@ body {
 .radial-anim-cadastros,
 .radial-anim-clientes,
 .radial-anim-paneleiros {
-  stroke-dasharray: 314;
+  stroke-dasharray: 126;
   stroke-dashoffset: 0;
-  transform-origin: 50px 50px;
+  transform-origin: 25px 25px;
   animation:
     radial-spin 2.5s linear infinite,
     radial-colors-cadastros 2.5s ease-in-out infinite;
@@ -403,8 +477,15 @@ body {
 
 
 @keyframes radial-colors-cadastros {
-  0%, 100% { stroke: #39cf7d; }
-  50% { stroke: #34b1e2; }
+
+  0%,
+  100% {
+    stroke: #39cf7d;
+  }
+
+  50% {
+    stroke: #34b1e2;
+  }
 }
 
 .radial-anim-clientes {
@@ -414,8 +495,15 @@ body {
 }
 
 @keyframes radial-colors-clientes {
-  0%, 100% { stroke: #34b1e2; }
-  50% { stroke: #f2c94c; }
+
+  0%,
+  100% {
+    stroke: #34b1e2;
+  }
+
+  50% {
+    stroke: #f2c94c;
+  }
 }
 
 .radial-anim-paneleiros {
@@ -425,6 +513,317 @@ body {
 }
 
 @keyframes radial-colors-paneleiros {
-  0%, 100% { stroke: #f2c94c; }
-  50% { stroke: #39cf7d; }
+
+  0%,
+  100% {
+    stroke: #f2c94c;
+  }
+
+  50% {
+    stroke: #39cf7d;
+  }
+}
+
+/* Administração styles */
+.admin-container {
+  background: #020C27;
+  padding: 25px;
+  border-radius: 24px;
+  color: #fff;
+  width: 90%;
+  margin: auto;
+  margin-top: 20px;
+}
+
+.users-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.user-card {
+  background: #17295C;
+  border-radius: 12px;
+  padding: 20px;
+  text-align: center;
+  color: #fff;
+}
+
+.user-photo {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 10px;
+}
+
+.user-card h3 {
+  margin: 10px 0;
+  font-size: 1.2rem;
+}
+
+.user-card p {
+  margin: 5px 0;
+  font-size: 0.9rem;
+}
+
+.card-actions {
+  margin-top: 15px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+}
+
+.card-actions button {
+  background: #34b1e2;
+  color: #fff;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 0.8rem;
+}
+
+.card-actions button:hover {
+  background: #2a9cc8;
+}
+
+/* Modal styles */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+  background-color: #17295C;
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+  max-width: 600px;
+  border-radius: 12px;
+  color: #fff;
+}
+
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.close:hover {
+  color: #fff;
+}
+
+#modal-body ul {
+  list-style: none;
+  padding: 0;
+}
+
+#modal-body li {
+  background: #25418E;
+  margin: 5px 0;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+/* Layout visibility */
+.desktop-layout {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  height: 100%;
+}
+
+.mobile-layout {
+  display: none;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .sidebar-overlay {
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 15;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+  }
+
+  .sidebar-overlay.active {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .sidebar {
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+    z-index: 20;
+  }
+
+  .sidebar.open {
+    transform: translateX(0);
+  }
+
+  .hamburger {
+    display: block;
+  }
+
+  .navbar {
+    left: 0;
+    width: 100%;
+  }
+
+  .dashboard-content {
+    margin-left: 0;
+    margin-top: 91px;
+    padding: 15px;
+    height: auto;
+    overflow: auto;
+  }
+
+  .desktop-layout {
+    display: none;
+  }
+
+  .mobile-layout {
+    display: block;
+  }
+
+  .dashboard-row-mobile {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: 100%;
+    margin-bottom: 15px;
+  }
+
+  .dashboard-row-mobile-3 {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: 100%;
+  }
+
+  .dashboard-row-mobile > .dashboard-cadas,
+  .dashboard-row-mobile > .dashboard-percentual {
+    width: 100%;
+  }
+
+  .dashboard-row-mobile-3 > .dashboard-servicos,
+  .dashboard-row-mobile-3 > .dashboard-firebase,
+  .dashboard-row-mobile-3 > .dashboard-estado {
+    width: 100%;
+  }
+
+  /* Mobile: cards de usuários em coluna */
+  .mobile-layout .dashboard-row {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .mobile-layout .dashboard-card {
+    padding: 15px;
+    min-height: 120px;
+  }
+
+  .mobile-layout .dashboard-card h3 {
+    font-size: 1rem;
+  }
+
+  .mobile-layout .radial-wrapper {
+    width: 80px;
+    height: 80px;
+  }
+
+  .mobile-layout .radial-number {
+    font-size: 1.5rem;
+  }
+
+  .mobile-layout .dashboard-date {
+    font-size: 0.8rem;
+  }
+
+  .mobile-layout .dashboard-cadas h2 {
+    font-size: 1.2rem;
+  }
+
+  .mobile-layout .percentual-chart-container {
+    width: 150px;
+    height: 150px;
+  }
+
+  .mobile-layout .percentual-title {
+    font-size: 1.2rem;
+  }
+
+  .mobile-layout .percentual-legenda {
+    font-size: 0.9rem;
+  }
+
+  .mobile-layout .radial-svg {
+    width: 80px;
+    height: 80px;
+  }
+
+  .mobile-layout .dashboard-servicos,
+  .mobile-layout .dashboard-firebase,
+  .mobile-layout .dashboard-estado {
+    padding: 15px;
+  }
+
+  .mobile-layout .dashboard-servicos h2,
+  .mobile-layout .dashboard-firebase h2,
+  .mobile-layout .dashboard-estado h2 {
+    font-size: 1.1rem;
+  }
+
+  .mobile-layout .fogo,
+  .mobile-layout .robo {
+    width: 60px;
+  }
+
+  .charts-content {
+    margin-left: 0;
+    flex-direction: column;
+    order: 1;
+  }
+
+  .chart-container {
+    flex: 1 1 100%;
+    max-width: 100%;
+  }
+
+  .admin-container {
+    width: 100%;
+  }
+
+  .users-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .user-card {
+    padding: 15px;
+  }
+
+  .card-actions {
+    flex-direction: column;
+  }
 }
