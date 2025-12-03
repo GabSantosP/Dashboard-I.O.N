@@ -834,4 +834,9 @@ body {
   .dashboard-estado {
     max-height: calc(100% - 130px);
   }
+  body, html {
+  height: 100%;
+  overflow-x: hidden;
 }
+}
+
