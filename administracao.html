@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="PT-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="adm.css">
+  <title>Administração - Dashboard</title>
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+</head>
+
+<body>
+
+  <div class="sidebar-overlay"></div>
+  <aside class="sidebar">
+    <div class="sidebar-header">
+      <h1>Conserta Já</h1>
+      <span>Painel Administrativo</span>
+    </div>
+    <nav class="sidebar-nav">
+      <ul>
+        <li><a href="index.html"><img src="./imgs/Home.png" alt="Dashboard Icon">Dashboard</a></li>
+        <li><a href="Charts.html"><img src="./imgs/Bar chart-2.png" alt="Charts Icon">Charts</a></li>
+        <li><img src="./imgs/Command.png" alt="Administração Icon">Administração</li>
+        <!-- <li><img src="./imgs/Alert triangle.png" alt="Denúncias Icon">Denúncias</li> -->
+        <!-- <li><img src="./imgs/Message square.png" alt="SAQ Icon">Suporte</li> -->
+      </ul>
+    </nav>
+  </aside>
+
+  <header class="navbar">
+    <button id="hamburger" class="hamburger">☰</button>
+  </header>
+
+  <main class="dashboard-content">
+    <div class="admin-container">
+      <h2>Administração de Usuários</h2>
+      <div id="users-container" class="users-grid">
+        <!-- User cards will be populated here -->
+      </div>
+    </div>
+  </main>
+
+  <!-- Modal for user details -->
+  <div id="user-modal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <h2 id="modal-title">Detalhes do Usuário</h2>
+      <div id="modal-body">
+        <!-- Details will be populated here -->
+      </div>
+    </div>
+  </div>
+
+  <script src="administracao.js"></script>
+</body>
+
+</html>
