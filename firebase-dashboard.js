@@ -53,16 +53,36 @@
         }
       });
 
-      document.getElementById("total-cadastros").textContent = totalCadastros;
-      document.getElementById("total-clientes").textContent = totalClientes;
-      document.getElementById("total-paneleiros").textContent = totalPaneleiros;
+      // Desktop elements
+      const totalCadastrosEl = document.getElementById("total-cadastros");
+      const totalClientesEl = document.getElementById("total-clientes");
+      const totalPaneleirosEl = document.getElementById("total-paneleiros");
+      const lastCadastroEl = document.getElementById("last-cadastro");
+      const lastClienteEl = document.getElementById("last-cliente");
+      const lastPaneleiroEl = document.getElementById("last-paneleiro");
 
-      document.getElementById("last-cadastro").innerHTML =
-        "Último cadastro:<br>" + formatarData(ultimoCadastro?.conta);
-      document.getElementById("last-cliente").innerHTML =
-        "Último cadastro:<br>" + formatarData(ultimoCliente?.conta);
-      document.getElementById("last-paneleiro").innerHTML =
-        "Último cadastro:<br>" + formatarData(ultimoPaneleiro?.conta);
+      // Mobile elements
+      const totalCadastrosMobileEl = document.getElementById("total-cadastros-mobile");
+      const totalClientesMobileEl = document.getElementById("total-clientes-mobile");
+      const totalPaneleirosMobileEl = document.getElementById("total-paneleiros-mobile");
+      const lastCadastroMobileEl = document.getElementById("last-cadastro-mobile");
+      const lastClienteMobileEl = document.getElementById("last-cliente-mobile");
+      const lastPaneleiroMobileEl = document.getElementById("last-paneleiro-mobile");
+
+      if (totalCadastrosEl) totalCadastrosEl.textContent = totalCadastros;
+      if (totalClientesEl) totalClientesEl.textContent = totalClientes;
+      if (totalPaneleirosEl) totalPaneleirosEl.textContent = totalPaneleiros;
+      if (lastCadastroEl) lastCadastroEl.innerHTML = "Último cadastro:<br>" + formatarData(ultimoCadastro?.conta);
+      if (lastClienteEl) lastClienteEl.innerHTML = "Último cadastro:<br>" + formatarData(ultimoCliente?.conta);
+      if (lastPaneleiroEl) lastPaneleiroEl.innerHTML = "Último cadastro:<br>" + formatarData(ultimoPaneleiro?.conta);
+
+      // Update mobile elements
+      if (totalCadastrosMobileEl) totalCadastrosMobileEl.textContent = totalCadastros;
+      if (totalClientesMobileEl) totalClientesMobileEl.textContent = totalClientes;
+      if (totalPaneleirosMobileEl) totalPaneleirosMobileEl.textContent = totalPaneleiros;
+      if (lastCadastroMobileEl) lastCadastroMobileEl.innerHTML = "Último cadastro:<br>" + formatarData(ultimoCadastro?.conta);
+      if (lastClienteMobileEl) lastClienteMobileEl.innerHTML = "Último cadastro:<br>" + formatarData(ultimoCliente?.conta);
+      if (lastPaneleiroMobileEl) lastPaneleiroMobileEl.innerHTML = "Último cadastro:<br>" + formatarData(ultimoPaneleiro?.conta);
 
       atualizarGraficoPercentual(totalClientes, totalPaneleiros);
     });
@@ -102,15 +122,27 @@ function atualizarServicos() {
       }
     });
 
-    document.getElementById("servicos-ativos").textContent = ativos;
-    document.getElementById("servicos-concluidos").textContent = concluidos;
-    document.getElementById("servicos-total").textContent = total;
+    const servicosAtivosEl = document.getElementById("servicos-ativos");
+    const servicosConcluidosEl = document.getElementById("servicos-concluidos");
+    const servicosTotalEl = document.getElementById("servicos-total");
+    const servicosAtivosMobileEl = document.getElementById("servicos-ativos-mobile");
+    const servicosConcluidosMobileEl = document.getElementById("servicos-concluidos-mobile");
+    const servicosTotalMobileEl = document.getElementById("servicos-total-mobile");
+
+    if (servicosAtivosEl) servicosAtivosEl.textContent = ativos;
+    if (servicosConcluidosEl) servicosConcluidosEl.textContent = concluidos;
+    if (servicosTotalEl) servicosTotalEl.textContent = total;
+    if (servicosAtivosMobileEl) servicosAtivosMobileEl.textContent = ativos;
+    if (servicosConcluidosMobileEl) servicosConcluidosMobileEl.textContent = concluidos;
+    if (servicosTotalMobileEl) servicosTotalMobileEl.textContent = total;
   });
 }
 
   function atualizarGraficoPercentual(clientes, paneleiros) {
     var total = clientes + paneleiros;
-    var ctx = document.getElementById("cadastroPercentChart").getContext("2d");
+    const chartEl = document.getElementById("cadastroPercentChart");
+    if (!chartEl) return;
+    var ctx = chartEl.getContext("2d");
 
     if (donutChart) donutChart.destroy();
 
@@ -141,6 +173,35 @@ function atualizarServicos() {
       plugins: [ChartDataLabels]
     });
   }
+
+  // Hamburger menu toggle
+  const hamburger = document.getElementById('hamburger');
+  const sidebar = document.querySelector('.sidebar');
+  const overlay = document.querySelector('.sidebar-overlay');
+
+  function toggleSidebar() {
+    sidebar.classList.toggle('open');
+    overlay.classList.toggle('active');
+  }
+
+  function closeSidebar() {
+    sidebar.classList.remove('open');
+    overlay.classList.remove('active');
+  }
+
+  if (hamburger) {
+    hamburger.addEventListener('click', toggleSidebar);
+  }
+
+  if (overlay) {
+    overlay.addEventListener('click', closeSidebar);
+  }
+
+  // Close sidebar when clicking on navigation links
+  const navLinks = document.querySelectorAll('.sidebar-nav a');
+  navLinks.forEach(link => {
+    link.addEventListener('click', closeSidebar);
+  });
 
   window.onload = function() {
     atualizarContadores();
