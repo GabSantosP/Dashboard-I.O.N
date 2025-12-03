@@ -1,18 +1,21 @@
 <!DOCTYPE html>
 <html lang="PT-BR">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <title>Dashboard</title>
-    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <title>Dashboard</title>
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script>
 </head>
+
 <body>
 
+  <div class="sidebar-overlay"></div>
   <aside class="sidebar">
     <div class="sidebar-header">
       <h1>Conserta Já</h1>
@@ -22,110 +25,211 @@
       <ul>
         <li><a href="index.html"><img src="./imgs/Home.png" alt="Dashboard Icon">Dashboard</a></li>
         <li><a href="Charts.html"><img src="./imgs/Bar chart-2.png" alt="Charts Icon">Charts</a></li>
-        <li><img src="./imgs/Command.png" alt="Administração Icon">Administração</li>
-       <!-- <li><img src="./imgs/Alert triangle.png" alt="Denúncias Icon">Denúncias</li> -->
-        <li><img src="./imgs/Message square.png" alt="SAQ Icon">Suporte</li>
+        <li><a href="administracao.html"><img src="./imgs/Command.png" alt="Administração Icon">Administração</a></li>
+        <!-- <li><img src="./imgs/Alert triangle.png" alt="Denúncias Icon">Denúncias</li> -->
+        <!-- <li><img src="./imgs/Message square.png" alt="SAQ Icon">Suporte</li> -->
       </ul>
     </nav>
   </aside>
 
-  <header class="navbar"></header>
+  <header class="navbar">
+    <button id="hamburger" class="hamburger">☰</button>
+  </header>
 
   <main class="dashboard-content">
-    <div class="dashboard-cadas">
-      <h2>Usuários Cadastrados</h2>
-      <div class="dashboard-row">
-        <div class="dashboard-card">
-          <h3>Total de Cadastros</h3>
-          <div class="radial-wrapper">
-            <span id="total-cadastros" class="radial-number">0</span>
-            <svg class="radial-svg" width="100" height="100">
-              <circle class="radial-bg" cx="50" cy="50" r="40" stroke-width="5" fill="none"/>
-              <circle class="radial-anim-cadastros" cx="50" cy="50" r="40" stroke-width="5" fill="none"/>
-            </svg>
+    <!-- Desktop layout (hidden on mobile) -->
+    <div class="desktop-layout">
+      <div class="desktop-row-1">
+        <div class="dashboard-cadas">
+          <h2>Usuários Cadastrados</h2>
+          <div class="dashboard-row">
+            <div class="dashboard-card">
+              <h3>Total de Cadastros</h3>
+              <div class="radial-wrapper">
+                <span id="total-cadastros" class="radial-number">0</span>
+              <svg class="radial-svg" width="50" height="50">
+                <circle class="radial-bg" cx="25" cy="25" r="20" stroke-width="3" fill="none" />
+                <circle class="radial-anim-cadastros" cx="25" cy="25" r="20" stroke-width="3" fill="none" />
+              </svg>
+              </div>
+              <p class="dashboard-date" id="last-cadastro">Último cadastro:<br>-</p>
+            </div>
+
+            <div class="dashboard-card">
+              <h3>Total de Clientes</h3>
+              <div class="radial-wrapper">
+                <span id="total-clientes" class="radial-number">0</span>
+                <svg class="radial-svg" width="50" height="50">
+                  <circle class="radial-bg" cx="25" cy="25" r="20" stroke-width="3" fill="none" />
+                  <circle class="radial-anim-clientes" cx="25" cy="25" r="20" stroke-width="3" fill="none" />
+                </svg>
+              </div>
+              <p class="dashboard-date" id="last-cliente">Último cadastro:<br>-</p>
+            </div>
+
+            <div class="dashboard-card">
+              <h3>Total de Paneleiros</h3>
+              <div class="radial-wrapper">
+                <span id="total-paneleiros" class="radial-number">0</span>
+                <svg class="radial-svg" width="50" height="50">
+                  <circle class="radial-bg" cx="25" cy="25" r="20" stroke-width="3" fill="none" />
+                  <circle class="radial-anim-paneleiros" cx="25" cy="25" r="20" stroke-width="3" fill="none" />
+                </svg>
+              </div>
+              <p class="dashboard-date" id="last-paneleiro">Último cadastro:<br>-</p>
+            </div>
           </div>
-          <p class="dashboard-date" id="last-cadastro">Último cadastro:<br>-</p>
         </div>
 
-        <div class="dashboard-card">
-          <h3>Total de Clientes</h3>
-          <div class="radial-wrapper">
-            <span id="total-clientes" class="radial-number">0</span>
-            <svg class="radial-svg" width="100" height="100">
-              <circle class="radial-bg" cx="50" cy="50" r="40" stroke-width="5" fill="none"/>
-              <circle class="radial-anim-clientes" cx="50" cy="50" r="40" stroke-width="5" fill="none"/>
-            </svg>
+        <div class="dashboard-percentual">
+          <h2 class="percentual-title">Percentual de Cadastros</h2>
+          <div class="percentual-chart-container">
+            <canvas id="cadastroPercentChart" width="190" height="190"></canvas>
           </div>
-          <p class="dashboard-date" id="last-cliente">Último cadastro:<br>-</p>
-        </div>
-
-        <div class="dashboard-card">
-          <h3>Total de Paneleiros</h3>
-          <div class="radial-wrapper">
-            <span id="total-paneleiros" class="radial-number">0</span>
-            <svg class="radial-svg" width="100" height="100">
-              <circle class="radial-bg" cx="50" cy="50" r="40" stroke-width="5" fill="none"/>
-              <circle class="radial-anim-paneleiros" cx="50" cy="50" r="40" stroke-width="5" fill="none"/>
-            </svg>
+          <div class="percentual-legenda">
+            <span class="legenda-cliente"></span> Clientes
+            <span class="legenda-paneleiro"></span> Paneleiros
           </div>
-          <p class="dashboard-date" id="last-paneleiro">Último cadastro:<br>-</p>
         </div>
       </div>
 
-      <div class="dashboard-percentual">
-        <h2 class="percentual-title">Percentual de Cadastros</h2>
-        <div class="percentual-chart-container">
-          <canvas id="cadastroPercentChart" width="190" height="190"></canvas>
+      <div class="desktop-row-2">
+        <div class="dashboard-servicos">
+          <h2>Serviços solicitados</h2>
+          <div class="servicos-content">
+            <p id="servicos-ativos">0</p>
+            <h3>Ativos</h3>
+            <img src="./imgs/ativo.png" alt="" class="ativo-fundo">
+          </div>
+          <div class="servicos-content2">
+            <div class="servico-bloco">
+              <p id="servicos-concluidos">0</p>
+              <h3>Concluídos</h3>
+            </div>
+            <div class="servico-bloco">
+              <p id="servicos-total">0</p>
+              <h3>Total</h3>
+            </div>
+          </div>
         </div>
-        <div class="percentual-legenda">
-          <span class="legenda-cliente"></span> Clientes
-          <span class="legenda-paneleiro"></span> Paneleiros
+
+        <div class="dashboard-firebase">
+          <h2>Conexão com o Firebase</h2>
+          <div class="dashboard-img">
+            <img src="./imgs/fire.png" alt="" class="fogo">
+            <div class="parte-texto">
+              <h2>Operando</h2>
+              <p>Desde:</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="dashboard-estado">
+          <h2>Estado do sistema</h2>
+          <div class="dashboard-img2">
+            <img src="./imgs/feliz.png" alt="" class="robo">
+            <div class="parte-texto">
+              <h2>Operando</h2>
+              <p>Desde:</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile layout -->
+    <div class="mobile-layout">
+      <div class="dashboard-row-mobile">
+        <div class="dashboard-cadas">
+          <h2>Usuários Cadastrados</h2>
+          <div class="dashboard-row">
+            <div class="dashboard-card">
+              <h3>Total de Cadastros</h3>
+              <div class="radial-wrapper">
+                <span id="total-cadastros-mobile" class="radial-number">0</span>
+                <svg class="radial-svg" width="80" height="80">
+                  <circle class="radial-bg" cx="40" cy="40" r="32" stroke-width="4" fill="none" />
+                  <circle class="radial-anim-cadastros" cx="40" cy="40" r="32" stroke-width="4" fill="none" />
+                </svg>
+              </div>
+              <p class="dashboard-date" id="last-cadastro-mobile">Último cadastro:<br>-</p>
+            </div>
+
+            <div class="dashboard-card">
+              <h3>Total de Clientes</h3>
+              <div class="radial-wrapper">
+                <span id="total-clientes-mobile" class="radial-number">0</span>
+                <svg class="radial-svg" width="80" height="80">
+                  <circle class="radial-bg" cx="40" cy="40" r="32" stroke-width="4" fill="none" />
+                  <circle class="radial-anim-clientes" cx="40" cy="40" r="32" stroke-width="4" fill="none" />
+                </svg>
+              </div>
+              <p class="dashboard-date" id="last-cliente-mobile">Último cadastro:<br>-</p>
+            </div>
+
+            <div class="dashboard-card">
+              <h3>Total de Paneleiros</h3>
+              <div class="radial-wrapper">
+                <span id="total-paneleiros-mobile" class="radial-number">0</span>
+                <svg class="radial-svg" width="80" height="80">
+                  <circle class="radial-bg" cx="40" cy="40" r="32" stroke-width="4" fill="none" />
+                  <circle class="radial-anim-paneleiros" cx="40" cy="40" r="32" stroke-width="4" fill="none" />
+                </svg>
+              </div>
+              <p class="dashboard-date" id="last-paneleiro-mobile">Último cadastro:<br>-</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="dashboard-percentual">
+          <h2 class="percentual-title">Percentual</h2>
+          <div class="percentual-chart-container">
+            <canvas id="cadastroPercentChart-mobile" width="190" height="190"></canvas>
+          </div>
+          <div class="percentual-legenda">
+            <span class="legenda-cliente"></span> Clientes
+            <span class="legenda-paneleiro"></span> Paneleiros
+          </div>
         </div>
       </div>
 
-      <div class="dashboard-servicos">
-        <h2>Serviços solicitados</h2>
-        <div class="servicos-content">
-          <p id="servicos-ativos">0</p>
-          <h3>Ativos</h3>
-          <img src="./imgs/ativo.png" alt="" class="ativo-fundo">
-        </div>
-        <div class="servicos-content2">
+      <div class="dashboard-row-mobile-3">
+        <div class="dashboard-servicos">
+          <h2>S. Soli.</h2>
+          <div class="servicos-content">
+            <p id="servicos-ativos-mobile">0</p>
+            <h3>Ativos</h3>
+          </div>
+          <div class="servicos-content2">
+            <div class="servico-bloco">
+              <p id="servicos-concluidos-mobile">0</p>
+              <h3>Concluídos</h3>
+            </div>
+
           <div class="servico-bloco">
-            <p id="servicos-concluidos">0</p>
-            <h3>Concluídos</h3>
+              <p id="servicos-total-mobile">0</p>
+              <h3>Total</h3>
+            </div>
+      </div>
+
+        <div class="dashboard-firebase">
+          <h2>C. c Firebase</h2>
+          <div class="dashboard-img">
+            <img src="./imgs/fire.png" alt="" class="fogo">
           </div>
-          <div class="servico-bloco">
-            <p id="servicos-total">0</p>
-            <h3>Total</h3>
+        </div>
+
+        <div class="dashboard-estado">
+          <h2>Es. do Sist</h2>
+          <div class="dashboard-img2">
+            <img src="./imgs/feliz.png" alt="" class="robo">
           </div>
         </div>
       </div>
+    </div>
+  </main>
 
-      <div class="dashboard-firebase">
-        <h2>Conexão com o Firebase</h2>
-        <div class="dashboard-img">
-          <img src="./imgs/fire.png" alt="" class="fogo">
-          <div class="parte-texto">
-            <h2>Operando</h2>
-            <p>Desde:</p>
-          </div>
-        </div>
-      </div>
+  <script src="firebase-dashboard.js"></script>
+</body>
 
-      <div class="dashboard-estado">
-        <h2>Estado do sistema</h2>
-        <div class="dashboard-img2">
-          <img src="./imgs/feliz.png" alt="" class="robo">
-          <div class="parte-texto">
-            <h2>Operando</h2>
-            <p>Desde:</p>
-          </div>
-        </div>
-      </div>
-    </main>
-
-    <script src="firebase-dashboard.js"></script>
-  </body>
 </html>
-
